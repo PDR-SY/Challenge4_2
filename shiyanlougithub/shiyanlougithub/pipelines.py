@@ -11,8 +11,8 @@ from sqlalchemy.orm import sessionmaker
 
 class ShiyanlougithubPipeline(object):
 	def process_item(self, item, spider):
-		item['name'] = item['name'].scrip()
-		item['update_time'] = datetime.strptime(item['update_time'],'%Y-%m-%d %H:%M:%S')
+		item['name'] = item['name'].strip()
+		#item['update_time'] = datetime.strptime(item['update_time'],'%Y-%m-%d %H:%M:%S')
 		self.session.add(GitLou(**item))
 		return item
 	def open_spider(self,spider):
