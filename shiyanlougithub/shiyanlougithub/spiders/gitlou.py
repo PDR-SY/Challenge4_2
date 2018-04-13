@@ -19,6 +19,7 @@ class GitlouSpider(scrapy.Spider):
 			request = scrapy.Request(url,callback = self.parse_detail)
 			request.meta['item'] = item
 			yield request
+			
 	def parse_detail(self,response):
 		item = response.meta['item']
 		item['commits'] = (response.css('li.commits a span::text').extract_first()).strip()
